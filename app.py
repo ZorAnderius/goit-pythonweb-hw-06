@@ -1,3 +1,6 @@
+from datetime import time
+from time import sleep
+
 from config.db import get_db
 def execute_query():
     db = next(get_db())
@@ -8,4 +11,4 @@ def execute_query():
 
 
 if __name__ == '__main__':
-        execute_query()
+    execute_query()
