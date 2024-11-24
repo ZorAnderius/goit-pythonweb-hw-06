@@ -11,5 +11,10 @@ else
   exit 1
 fi
 
-echo "Starting the application..."
-python app.py
+if [ "$1" == "cli" ]; then
+    echo "Starting CLI..."
+    python app.py
+else
+    echo "Starting the application..."
+    python app.py
+fi
