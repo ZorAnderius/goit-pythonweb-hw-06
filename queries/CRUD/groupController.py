@@ -1,4 +1,4 @@
-from config.db import SessionLocal
+from config.db import session
 from queries.CRUD.service import create_entity, list_entities, update_entity, remove_entity
 from models import Group
 
@@ -18,7 +18,7 @@ def update_group() -> None:
         print("Operation canceled.")
         return
     group_id = int(group_id)
-    group = SessionLocal().query(Group).get(group_id)
+    group = session.query(Group).get(group_id)
 
     if not group:
         print(f"No group found with ID {group_id}.")
@@ -37,7 +37,7 @@ def remove_group() -> None:
         print("Operation canceled.")
         return
     group_id = int(group_id)
-    group = SessionLocal().query(Group).get(group_id)
+    group = session.query(Group).get(group_id)
 
     if not group:
         print(f"No group found with ID {group_id}.")

@@ -1,4 +1,4 @@
-from config.db import SessionLocal
+from config.db import session
 from queries.CRUD.service import list_entities, create_entity, update_entity, remove_entity
 from models import Subject, Teacher
 
@@ -29,7 +29,7 @@ def update_subject() -> None:
         print("Operation canceled.")
         return
     subject_id = int(subject_id)
-    subject = SessionLocal().query(Subject).get(subject_id)
+    subject = session.query(Subject).get(subject_id)
     if not subject:
         print(f"No subject found with ID {subject_id}.")
         return
@@ -57,7 +57,7 @@ def remove_subject() -> None:
         print("Operation canceled.")
         return
     subject_id = int(subject_id)
-    student = SessionLocal().query(Subject).get(subject_id)
+    student = session.query(Subject).get(subject_id)
 
     if not student:
         print(f"No subject found with ID {subject_id}.")

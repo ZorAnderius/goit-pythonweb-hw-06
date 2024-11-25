@@ -1,4 +1,4 @@
-from config.db import session
+from config.db import SessionLocal
 from queries.CRUD.service import remove_entity, update_entity, list_entities, create_entity
 from models import Grade, Student, Subject
 
@@ -37,7 +37,7 @@ def update_grade() -> None:
         print("Operation canceled.")
         return
     grade_id = int(grade_id)
-    grade_record = session.query(Grade).get(grade_id)
+    grade_record = SessionLocal().query(Grade).get(grade_id)
     if not grade_record:
         print(f"No grade found with ID {grade_id}.")
         return
@@ -55,7 +55,7 @@ def remove_grade() -> None:
         print("Operation canceled.")
         return
     grade_id = int(grade_id)
-    grade_record = session.query(Grade).get(grade_id)
+    grade_record = SessionLocal().query(Grade).get(grade_id)
     if not grade_record:
         print(f"No grade found with ID {grade_id}.")
         return

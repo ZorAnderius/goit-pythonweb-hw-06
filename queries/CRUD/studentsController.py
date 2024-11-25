@@ -1,6 +1,6 @@
-from config.db import SessionLocal
+from config.db import session
 from queries.CRUD.groupController import list_groups
-from queries.CRUD.service import create_entity, list_entities, update_entity, remove_entity, session
+from queries.CRUD.service import create_entity, list_entities, update_entity, remove_entity
 from models import Student
 
 def create_student() -> None:
@@ -27,7 +27,7 @@ def update_student() -> None:
         print("Operation canceled.")
         return
     student_id = int(student_id)
-    student = SessionLocal().query(Student).get(student_id)
+    student = session.query(Student).get(student_id)
 
     if not student:
         print(f"No student found with ID {student_id}.")
@@ -54,7 +54,7 @@ def remove_student() -> None:
         print("Operation canceled.")
         return
     student_id = int(student_id)
-    student = SessionLocal().query(Student).get(student_id)
+    student = session.query(Student).get(student_id)
 
     if not student:
         print(f"No student found with ID {student_id}.")
