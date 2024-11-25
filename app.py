@@ -8,7 +8,7 @@ from rich.console import Console
 from CLI.comands import command_completer
 from CLI.handle_commands import handle_command
 from config.db import get_db
-from db_queries.seed import seed_groups, seed_teachers, seed_subjects, seed_students, seed_grades
+from queries.seed import seed_groups, seed_teachers, seed_subjects, seed_students, seed_grades
 
 style = Style.from_dict({
     'command': '#ffcc00',

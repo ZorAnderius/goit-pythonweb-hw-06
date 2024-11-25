@@ -13,7 +13,8 @@ def create_entity(entity_class: Type[as_declarative], **kwargs: Any) -> None:
 def list_entities(entity_class: Type[as_declarative]) -> None:
     entities = session.query(entity_class).all()
     for entity in entities:
-        print(f"ID: {entity.id}, Attributes: {entity.__dict__}")
+        attributes = {key: value for key, value in entity.__dict__.items() if key != '_sa_instance_state'}
+        print(f"ID: {entity.id}, Attributes: {attributes}")
 
 def update_entity(entity_class: Type[as_declarative], entity_id: int, **kwargs: Any) -> None:
     entity = session.query(entity_class).get(entity_id)
@@ -33,3 +34,10 @@ def remove_entity(entity_class: Type[as_declarative], entity_id: int) -> None:
     session.delete(entity)
     session.commit()
     print(f"{entity_class.__name__} with ID {entity_id} removed successfully.")
+
+
+def remove_all_entities(entity_class: Type[as_declarative]) -> None:
+    entities = session.query(entity_class).all()
+    for entity in entities:
+        session.delete(entity)
+    session.commit()
