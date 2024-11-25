@@ -43,11 +43,14 @@ def select_3() -> list[Row[tuple[int, Any]]] | None:
         return
     subject_id = int(subject_id)
 
-    result = ((session.query(Grade.grade, func.avg(Grade.grade).label('avg_grade')))
+    result = (session.query(
+        Group.id.label('group_id'),
+        Group.name.label('group_name'),
+        func.avg(Grade.grade).label('avg_grade'))
               .join(Student, Group.id == Student.group_id)
               .join(Grade, Student.id == Grade.student_id)
               .filter(Grade.subject_id == subject_id)
-              .group_by(Grade.id)
+              .group_by(Group.id, Group.name)
               .order_by(desc('avg_grade'))
               .all())
     return result
@@ -88,7 +91,7 @@ def select_6() -> list[InstrumentedAttribute[str]] | None:
 
 def select_7() -> list[Row[tuple[str, Any]]] | None:
     list_groups()
-    group_id = (input("Enter teacher id: ")).strip()
+    group_id = (input("Enter group id: ")).strip()
     if not group_id or not group_id.isdigit():
         print("Operation canceled.")
         return

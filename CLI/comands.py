@@ -7,7 +7,9 @@ def command_completer():
         "create-grade", "list-grades", "update-grade", "delete-grade",
         "create-student", "list-students", "update-student", "delete-student",
         "create-subject", "list-subjects", "update-subject", "delete-subject",
-        "help", "seed-data", "clean-all-tables",
-        "exit"
+        "select_1", "select_2","select_3","select_4","select_5","select_6",
+        "select_7", "select_8","select_9","select_10","select_11","select_12",
+        "seed-data", "clean-all-tables",
+        "help", "exit"
     ]
     return WordCompleter(commands)
