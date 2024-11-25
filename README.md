@@ -112,4 +112,4 @@ docker-compose run app cli
 ```
 
 ### Run a command
-[Show list of commands](/assets/running_command.png)
+![](assets/running_command.png)
