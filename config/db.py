@@ -14,6 +14,7 @@ logging.getLogger("sqlalchemy.engine").setLevel(logging.WARNING)
 
 Base.metadata.create_all(engine)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+session = SessionLocal()
 
 def get_db():
     db = SessionLocal()

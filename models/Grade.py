@@ -10,7 +10,7 @@ class Grade(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     student_id: Mapped[int] = mapped_column(Integer, ForeignKey('students.id'), nullable=False)
     subject_id: Mapped[int] = mapped_column(Integer, ForeignKey('subjects.id'), nullable=False)
-    grade: Mapped[int] = mapped_column(Integer, nullable=False)
+    grade: Mapped[int] = mapped_column(Integer, nullable=True)
     date_received: Mapped[datetime] = mapped_column(DateTime, default=datetime.now(timezone.utc))
 
     student: Mapped['Student'] = relationship('Student', back_populates='grades')

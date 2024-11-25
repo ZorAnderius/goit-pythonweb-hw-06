@@ -1,8 +1,6 @@
 from typing import Type, Any, Dict
 from sqlalchemy.ext.declarative import as_declarative
-from config.db import SessionLocal
-
-session = SessionLocal()
+from config.db import session
 
 def create_entity(entity_class: Type[as_declarative], **kwargs: Any) -> None:
     entity = entity_class(**kwargs)
